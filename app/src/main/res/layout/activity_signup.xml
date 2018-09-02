@@ -45,7 +45,7 @@
             android:paddingStart="10dp"
             android:paddingLeft="10dp"
             android:gravity="center"
-            android:hint="Name"
+            android:hint="MY NAME IS ABHISHEK"
             android:drawablePadding="-30dp"
             android:layout_gravity="center_horizontal"
             />
