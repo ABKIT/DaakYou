@@ -1,4 +1,4 @@
-package com.daakyou.fragments;
+package com.daakyou.singup;
 
 import android.content.Context;
 import android.net.Uri;
@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.daakyou.R;
-import com.daakyou.singup.signup;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.TaskExecutors;
@@ -27,12 +26,12 @@ import java.util.concurrent.TimeUnit;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link verificationotp.OnFragmentInteractionListener} interface
+ * {@link verifyotp.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link verificationotp#newInstance} factory method to
+ * Use the {@link verifyotp#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class verificationotp extends Fragment {
+public class verifyotp extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -41,14 +40,13 @@ public class verificationotp extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
-  private   String mverificationid,code;
-   private PhoneAuthProvider.ForceResendingToken resendingToken;
-  private   FirebaseAuth ath;
+    private String mverificationid,code;
+    FirebaseAuth ath;
+    PhoneAuthProvider.ForceResendingToken resendingToken;
 
     private OnFragmentInteractionListener mListener;
 
-    public verificationotp() {
+    public verifyotp() {
         // Required empty public constructor
     }
 
@@ -58,11 +56,11 @@ public class verificationotp extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment verificationotp.
+     * @return A new instance of fragment verifyotp.
      */
     // TODO: Rename and change types and number of parameters
-    public static verificationotp newInstance(String param1, String param2) {
-        verificationotp fragment = new verificationotp();
+    public static verifyotp newInstance(String param1, String param2) {
+        verifyotp fragment = new verifyotp();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -82,20 +80,59 @@ public class verificationotp extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v=inflater.inflate(R.layout.fragment_verificationotp, container, false);
-
-        String mverificationid= getArguments().getString("mverificationid");
-        String fullname=getArguments().getString("fullname");
-        String phone=getArguments().getString("phone");
-        String password=getArguments().getString("password");
-        sendVerificationCode(phone);
+        View v=inflater.inflate(R.layout.fragment_verifyotp, container, false);
+        String mobile=getArguments().getString("phone");
+        //sendVerificationCode(mobile);
 
 
 
 
 
 
+
+
+
+        // Inflate the layout for this fragment
         return v;
+    }
+
+    // TODO: Rename method, update argument and hook method into UI event
+    public void onButtonPressed(Uri uri) {
+        if (mListener != null) {
+            mListener.onFragmentInteraction(uri);
+        }
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof OnFragmentInteractionListener) {
+            mListener = (OnFragmentInteractionListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
+
+    /**
+     * This interface must be implemented by activities that contain this
+     * fragment to allow an interaction in this fragment to be communicated
+     * to the activity and potentially other fragments contained in that
+     * activity.
+     * <p>
+     * See the Android Training lesson <a href=
+     * "http://developer.android.com/training/basics/fragments/communicating.html"
+     * >Communicating with Other Fragments</a> for more information.
+     */
+    public interface OnFragmentInteractionListener {
+        // TODO: Update argument type and name
+        void onFragmentInteraction(Uri uri);
     }
 
     private void sendVerificationCode(String mobile) {
@@ -162,42 +199,6 @@ public class verificationotp extends Fragment {
         });
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
 }
