@@ -85,7 +85,7 @@ public class signup extends AppCompatActivity {
             case R.id.register :
                 if(!checkvalidation(fullname,phone,password))
                 {
-                    sendVerificationCode(phone.getText().toString());
+                    //sendVerificationCode(phone.getText().toString());
                     hideall();
                     i=1;
                 }
@@ -98,7 +98,7 @@ public class signup extends AppCompatActivity {
             case R.id.signup:
                 if(!TextUtils.isEmpty(otp.getText().toString()))
                 {
-                    verifyverificationcode(otp.getText().toString());
+                   // verifyverificationcode(otp.getText().toString());
                 }
                 break;
             case R.id.signin :
