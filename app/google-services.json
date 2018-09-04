@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "758335501334-q0o9urv7691cb0aucoflg4a1upv1b1o4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.daakyou",
+            "certificate_hash": "69cf7acb62d31d73c9b3fe084f1aedd8bcfb04e5"
+          }
+        },
+        {
           "client_id": "758335501334-f5d58jg2gcuj2ahm4urfokvdc0og1mrh.apps.googleusercontent.com",
           "client_type": 3
         }

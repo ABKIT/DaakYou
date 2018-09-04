@@ -1,18 +1,26 @@
 package com.daakyou.singup;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Scroller;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.chaos.view.PinView;
 import com.daakyou.MainActivity;
 import com.daakyou.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -28,9 +36,14 @@ import com.google.firebase.auth.PhoneAuthProvider;
 import java.util.concurrent.TimeUnit;
 
 public class signup extends AppCompatActivity {
-    EditText fullname,phone,password,otp;
+    EditText fullname,phone,password;
     Button signup,register;
-    TextView show,signin;
+    TextView show,signin,terms;
+    ImageButton ib;
+    RelativeLayout form;
+    TextView otp2,head;
+    PinView otp;
+    CheckBox cb;
     String onbackpress="signup";
     private String mverificationid,code;
     FirebaseAuth ath;
@@ -45,6 +58,12 @@ public class signup extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
 
         //get ids
+        form=(RelativeLayout)findViewById(R.id.form);
+        head=(TextView)findViewById(R.id.head);
+        otp2=(TextView)findViewById(R.id.otp2);
+        cb=(CheckBox)findViewById(R.id.checkbox);
+        terms=(TextView)findViewById(R.id.terms);
+        ib=(ImageButton)findViewById(R.id.user_profile_photo);
         fullname=(EditText)findViewById(R.id.fullname);
         phone=(EditText)findViewById(R.id.mobile);
         password=(EditText)findViewById(R.id.password);
@@ -52,8 +71,7 @@ public class signup extends AppCompatActivity {
         register=(Button)findViewById(R.id.signup);
         show=(TextView)findViewById(R.id.show);
         signin=(TextView)findViewById(R.id.signin);
-        otp=(EditText)findViewById(R.id.otp);
-
+        otp=(PinView) findViewById(R.id.otp);
         showall();
 
         ath=FirebaseAuth.getInstance();
@@ -95,11 +113,17 @@ public class signup extends AppCompatActivity {
         fullname.setVisibility(View.GONE);
         phone.setVisibility(View.GONE);
         password.setVisibility(View.GONE);
+        head.setVisibility(View.GONE);
+        cb.setVisibility(View.GONE);
+        terms.setVisibility(View.GONE);
+        ib.setVisibility(View.GONE);
         signup.setVisibility(View.GONE);
+        form.setVisibility(View.GONE);
+        otp.setVisibility(View.VISIBLE);
         signup.setEnabled(false);
         show.setVisibility(View.GONE);
         signin.setVisibility(View.GONE);
-        otp.setVisibility(View.VISIBLE);
+        otp2.setVisibility(View.VISIBLE);
         register.setEnabled(true);
         register.setVisibility(View.VISIBLE);
 
@@ -111,11 +135,17 @@ public class signup extends AppCompatActivity {
         fullname.setVisibility(View.VISIBLE);
         phone.setVisibility(View.VISIBLE);
         password.setVisibility(View.VISIBLE);
+        form.setVisibility(View.VISIBLE);
+        ib.setVisibility(View.VISIBLE);
+        head.setVisibility(View.VISIBLE);
+        terms.setVisibility(View.VISIBLE);
+        cb.setVisibility(View.VISIBLE);
         signup.setVisibility(View.VISIBLE);
         signup.setEnabled(true);
+        otp.setVisibility(View.GONE);
         show.setVisibility(View.VISIBLE);
         signin.setVisibility(View.VISIBLE);
-        otp.setVisibility(View.GONE);
+        otp2.setVisibility(View.GONE);
         register.setVisibility(View.GONE);
         register.setEnabled(false);
 
