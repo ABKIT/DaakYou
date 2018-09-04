@@ -24,7 +24,6 @@ import com.google.firebase.auth.FirebaseAuth;
 public class MainActivity extends AppCompatActivity implements home.OnFragmentInteractionListener, wallet.OnFragmentInteractionListener, account.OnFragmentInteractionListener {
 
     private FirebaseAuth ath;
-    Fragment fragment;
     private NavigationView navigationView;
     DrawerLayout layout;
     private ImageView toolbarbutton;
