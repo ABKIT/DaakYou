@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements home.OnFragmentIn
 
             Intent send=new Intent(getApplicationContext(),signup.class);
             startActivity(send);
-            finish();
+
 
         }
 
