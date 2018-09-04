@@ -57,6 +57,7 @@ public class signup extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
+
         //get ids
         form=(RelativeLayout)findViewById(R.id.form);
         head=(TextView)findViewById(R.id.head);
@@ -75,6 +76,16 @@ public class signup extends AppCompatActivity {
         showall();
 
         ath=FirebaseAuth.getInstance();
+        if(ath.getCurrentUser()!=null)
+        {
+
+            Intent send=new Intent(getApplicationContext(),MainActivity.class);
+            startActivity(send);
+            finish();
+
+        }
+
+
 
 
     }
@@ -85,7 +96,7 @@ public class signup extends AppCompatActivity {
             case R.id.register :
                 if(!checkvalidation(fullname,phone,password))
                 {
-                    //sendVerificationCode(phone.getText().toString());
+                    sendVerificationCode(phone.getText().toString());
                     hideall();
                     i=1;
                 }
@@ -98,7 +109,7 @@ public class signup extends AppCompatActivity {
             case R.id.signup:
                 if(!TextUtils.isEmpty(otp.getText().toString()))
                 {
-                   // verifyverificationcode(otp.getText().toString());
+                   verifyverificationcode(otp.getText().toString());
                 }
                 break;
             case R.id.signin :

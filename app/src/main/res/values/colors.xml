@@ -6,5 +6,9 @@
     <color name="white">#ffffff</color>
     <color name="bluetextcolor">#683ab7</color>
     <color name="grey">#787070</color>
+    <color name="tabtextcoloronselect">#f91010</color>
     <color name="black">#000</color>
+    <color name="tabtextcolor">#9c9b9b</color>
+    <color name="toolbarbackgroundcolor">#dedfe1</color>
+    <color name="orange">#c54129</color>
 </resources>
